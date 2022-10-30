@@ -1,0 +1,3 @@
+module vector {
+    exports vector;
+}
