@@ -19,8 +19,7 @@ jobs:
       run: |
         wget https://download.java.net/java/early_access/jextract/2/openjdk-19-jextract+2-3_linux-x64_bin.tar.gz;
         tar -xvf openjdk-19-jextract+2-3_linux-x64_bin.tar.gz;
-        ls ~/jextract-19/bin;
-        echo "~/jextract-19/bin" >> $GITHUB_PATH;
+        echo "`pwd`/jextract-19/bin" >> $GITHUB_PATH;
         jextract --help;
     - name: Build with Maven
       run: mvn clean package
