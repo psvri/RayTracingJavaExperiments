@@ -1,7 +1,8 @@
+package vector;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.lang.Math;
-import vector.Vec;
 
 public class VecTest {
     @Test
@@ -31,7 +32,6 @@ public class VecTest {
         assertEquals(vec1.mulAssign(2), new Vec(4, 8, 12));
         assertEquals(vec1.divAssign(2), new Vec(2, 4, 6));
 
-
         assertEquals(vec1.add(vec1.negate()), new Vec());
         assertEquals(vec1.sub(vec1.negate()), new Vec(4, 8, 12));
         assertEquals(vec1.mul(10), new Vec(20, 40, 60));
@@ -44,7 +44,7 @@ public class VecTest {
         assertEquals(vec1.cross(vec1), new Vec());
         assertEquals(vec1.cross(new Vec(3, 2, 1)), new Vec(-8, 16, -8));
 
-        assertEquals(vec1.unit_vector(), new Vec(2/Math.sqrt(56), 4/Math.sqrt(56), 6/Math.sqrt(56)));
+        assertEquals(vec1.unit_vector(), new Vec(2 / Math.sqrt(56), 4 / Math.sqrt(56), 6 / Math.sqrt(56)));
         assertEquals(new Vec(1, 0, 0).unit_vector(), new Vec(1, 0, 0));
     }
 }

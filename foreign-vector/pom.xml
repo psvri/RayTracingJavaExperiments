@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>vector</groupId>
-    <artifactId>ClassVector</artifactId>
+    <artifactId>ForeignVector</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
-    <name>class-vector</name>
+    <packaging>pom</packaging>
+    <name>foreign-vector</name>
 
     <dependencies>
         <dependency>
@@ -35,10 +35,15 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
             </plugin>
         </plugins>
     </build>
+
+    <modules>
+        <module>rust-vector</module>
+        <module>panama-vector</module>
+    </modules>
 
 </project>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>vector</groupId>
+        <artifactId>ForeignVector</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <groupId>vector</groupId>
+    <artifactId>RustVector</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <name>rust-vector</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>test lib</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>cargo</executable>
+                            <arguments>
+                                <argument>test</argument>
+                                <argument>--target-dir</argument>
+                                <argument>target_rust</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>build lib</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>cargo</executable>
+                            <arguments>
+                                <argument>build</argument>
+                                <argument>--target-dir</argument>
+                                <argument>target_rust</argument>
+                                <argument>-r</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>run jextract</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>jextract</executable>
+                            <arguments>
+                                <argument>--output</argument>
+                                <argument>classes</argument>
+                                <argument>-t</argument>
+                                <argument>rust.vector</argument>
+                                <argument>-l</argument>
+                                <argument>rust_vector</argument>
+                                <argument>lib.h</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>classes/</classesDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
