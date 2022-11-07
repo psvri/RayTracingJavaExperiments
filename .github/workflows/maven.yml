@@ -17,10 +17,11 @@ jobs:
           components: 'native-image'
     - name: setup jextract
       run: |
-        wget https://download.java.net/java/early_access/jextract/2/openjdk-19-jextract+2-3_linux-x64_bin.tar.gz;
-        tar -xvf openjdk-19-jextract+2-3_linux-x64_bin.tar.gz;
+        wget -nv https://download.java.net/java/early_access/jextract/2/openjdk-19-jextract+2-3_linux-x64_bin.tar.gz;
+        tar -xf openjdk-19-jextract+2-3_linux-x64_bin.tar.gz;
         echo "`pwd`/jextract-19/bin" >> $GITHUB_PATH;
         ls `pwd`/jextract-19/bin;
+        echo "path is $PATH";
         jextract --help;
     - name: Build with Maven
       run: mvn clean package
