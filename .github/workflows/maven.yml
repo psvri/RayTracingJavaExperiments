@@ -15,7 +15,8 @@ jobs:
         tar -xf openjdk-19-jextract+2-3_linux-x64_bin.tar.gz;
         echo "`pwd`/jextract-19/bin" >> $GITHUB_PATH;
         ls -lah `pwd`/jextract-19/bin;
-        echo "GITHUB_PATH is $GITHUB_PATH"
+    - name: check jextract
+      run: |
         echo "path is $PATH";
         jextract --help;
     - name: GraalVM setup
